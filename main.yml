@@ -1,0 +1,31 @@
+name: AliExpress Coin Collector
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Executa diariamente à meia-noite
+  push:
+    branches:
+      - main
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run workflow
+      env:
+        ALIEXPRESS_EMAIL: ${{ secrets.ALIEXPRESS_EMAIL }}
+        ALIEXPRESS_PASSWORD: ${{ secrets.ALIEXPRESS_PASSWORD }}
+      run: python script_automa.py
