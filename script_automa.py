@@ -29,7 +29,7 @@ sleep(5)  # Aguarde o login
 
 # Adicionar código para coletar moedas
 # Exemplo:
-driver.get("URL_DA_PAGINA_DE_COLETA_DE_MOEDAS")
+driver.get("https://www.aliexpress.com/p/coin-pc-index")
 sleep(3)  # Aguarde a página carregar
 coletar_moedas_button = driver.find_element("ELEMENTO_DO_BOTAO_DE_COLETA")
 coletar_moedas_button.click()
